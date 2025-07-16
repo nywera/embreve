@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nywera é um estúdio de design e tecnologia que transforma ideias em experiências digitais inovadoras e impactantes.">
+    <link rel="icon" href="img/favicon.png" type="image/svg+xml">
+    <title>Nywera</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="contact-section theme-light">
+            <div class="content-wrapper">
+                <div class="contact-container">
+                    <div class="contact-text">
+                        <span class="contact-us-tag">Contato</span>
+                        <h1>Vamos nos <br>conectar.</h1>
+                        <p>Estamos prontos para ouvir sobre seu projeto. Preencha o formulário ou, se preferir, entre em contato diretamente.</p>
+                        <p class="manual-contact">Ou nos contate em <a href="mailto:contato@nywera.com">contato@nywera.com</a></p>
+                    </div>
+                    <div class="contact-form-wrapper">
+                        <form action="#" method="POST">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullname">Nome Completo</label>
+                                    <input type="text" id="fullname" name="fullname" class="form-input" placeholder="Digite seu nome completo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" class="form-input" placeholder="Digite seu endereço de email">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Telefone</label>
+                                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="Digite seu número de telefone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="position">Cargo</label>
+                                    <select id="position" name="position" class="form-input">
+                                        <option value="" disabled selected>Selecione seu cargo</option>
+                                        <option value="ceo">CEO / Fundador</option>
+                                        <option value="gerente">Gerente</option>
+                                        <option value="desenvolvedor">Desenvolvedor</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Escolha nossos serviços</label>
+                                <div class="services-options">
+                                    <div class="service-option">
+                                        <input type="checkbox" id="ui-ux" name="services[]" value="ui-ux">
+                                        <label for="ui-ux">UI/UX Design</label>
+                                    </div>
+                                    <div class="service-option">
+                                        <input type="checkbox" id="web-dev" name="services[]" value="web-dev">
+                                        <label for="web-dev">Desenvolvimento Web</label>
+                                    </div>
+                                    <div class="service-option">
+                                        <input type="checkbox" id="branding" name="services[]" value="branding">
+                                        <label for="branding">Branding</label>
+                                    </div>
+                                    <div class="service-option">
+                                        <input type="checkbox" id="marketing" name="services[]" value="marketing">
+                                        <label for="marketing">Marketing</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensagem</label>
+                                <textarea id="message" name="message" rows="4" class="form-input" placeholder="Digite sua mensagem aqui..." maxlength="300"></textarea>
+                                <div class="char-count">
+                                    <span id="current-chars">0</span> / 300
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar Formulário <i class="fas fa-arrow-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="cta-section theme-dark">
+        <div class="content-wrapper">
+            <h2>Vamos <span class="highlight">conversar</span> sobre o seu próximo <span class="highlight">projeto?</span></h2>
+            <p>Descubra como podemos impulsionar seu negócio</p>
+            <a href="#" class="btn btn-primary">Entrar em contato</a>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
