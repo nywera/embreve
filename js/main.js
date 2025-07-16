@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (targetElementId === 'header-placeholder') {
                         setupHeader();
                     }
+                    // Atualiza os ícones da Lucide após carregar novo conteúdo
+                    if (window.lucide) {
+                        window.lucide.createIcons();
+                    }
                 })
                 .catch(error => console.error('Error loading component:', error));
         }
