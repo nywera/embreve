@@ -36,6 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('portfolio-placeholder')) {
         loadComponent('_includes/portfolio-section.html', 'portfolio-placeholder');
     }
+    if (document.getElementById('product-showcase-placeholder')) {
+        loadComponent('_includes/product-showcase-section.html', 'product-showcase-placeholder');
+    }
+    if (document.getElementById('cta-placeholder')) {
+        loadComponent('_includes/cta-section.html', 'cta-placeholder');
+    }
+    if (document.getElementById('info-placeholder')) {
+        loadComponent('_includes/info-section.html', 'info-placeholder');
+    }
 
     // Agrupa todas as funções que dependem do header
     function setupHeader() {
