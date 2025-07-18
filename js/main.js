@@ -72,13 +72,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Menu mobile
-        if (mobileNavToggle && primaryNav) {
+        if (mobileNavToggle) {
             mobileNavToggle.addEventListener('click', () => {
-                const isVisible = primaryNav.getAttribute('data-visible') === 'true';
-                primaryNav.setAttribute('data-visible', !isVisible);
-                mobileNavToggle.setAttribute('aria-expanded', !isVisible);
+                const headerWrapper = document.querySelector('.header-wrapper');
+                const isOpen = headerWrapper.classList.contains('nav-open');
+                
+                if (isOpen) {
+                    headerWrapper.classList.remove('nav-open');
+                    mobileNavToggle.setAttribute('aria-expanded', 'false');
+                } else {
+                    headerWrapper.classList.add('nav-open');
+                    mobileNavToggle.setAttribute('aria-expanded', 'true');
+                }
             });
         }
+
+        // Dropdown mobile
+        const dropdownItems = document.querySelectorAll('.dropdown');
+        dropdownItems.forEach(dropdown => {
+            const dropdownLink = dropdown.querySelector('a');
+            dropdownLink.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('submenu-open');
+                }
+            });
+        });
 
         // Efeito de scroll no header
         if (header) {

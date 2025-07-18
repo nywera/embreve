@@ -285,6 +285,7 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    position: relative;
 }
 
 .logo img {
@@ -745,6 +746,7 @@ footer {
     .header-wrapper.nav-open nav ul {
         flex-direction: column;
         gap: 30px;
+        text-align: center;
     }
 
     .header-wrapper.nav-open nav a {
@@ -783,10 +785,18 @@ footer {
         cursor: pointer;
         z-index: 1000;
         padding: 0.5em;
+        position: relative;
     }
 
     .mobile-nav-toggle .fa-times {
         display: none;
+    }
+
+    .header-wrapper.nav-open .mobile-nav-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        color: var(--black-color);
     }
 
     .header-wrapper.nav-open .mobile-nav-toggle .fa-bars {
@@ -861,13 +871,13 @@ footer {
     }
 
     section {
-        padding: 60px 0;
+        padding: 40px 0;
         min-height: auto;
         max-height: none;
     }
 
     .content-wrapper {
-        width: 90%;
+        width: 100%;
         padding: 0 16px;
     }
 
@@ -1097,6 +1107,198 @@ footer {
     color: var(--dark-color);
     fill: var(--dark-color);
     margin-left: 5px; /* Ajuste para centralizar o ícone de play */
+}
+
+/* --- Process Section --- */
+.process-section {
+    padding: 80px 0;
+}
+
+.process-section .section-header h2 {
+    color: var(--black-color);
+}
+
+.process-section .section-header p {
+    color: #555;
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.process-step {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 16px;
+    background-color: var(--light-color);
+    border: 1px solid rgba(222, 81, 20, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(222, 81, 20, 0.15);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background-color: var(--orange-color);
+    color: var(--light-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Malinton', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+}
+
+.process-step h3 {
+    font-family: 'Malinton', sans-serif;
+    font-size: 1.3rem;
+    color: var(--black-color);
+    margin: 0 0 15px 0;
+    font-weight: 600;
+}
+
+.process-step p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsividade para Process Section */
+@media (max-width: 1024px) {
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .process-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .process-step {
+        padding: 25px 15px;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .process-step h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* --- Voice Tone Section --- */
+.voice-tone-section {
+    padding: 80px 0;
+}
+
+.voice-tone-section .section-header h2 {
+    color: var(--black-color);
+}
+
+.voice-tone-section .section-header p {
+    color: #555;
+}
+
+.voice-tone-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-top: 60px;
+}
+
+.voice-tone-text {
+    flex: 1;
+}
+
+.voice-tone-text h3 {
+    font-family: 'Malinton', sans-serif;
+    font-size: 2rem;
+    color: var(--black-color);
+    margin: 0 0 20px 0;
+    line-height: 1.3;
+}
+
+.voice-tone-text p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.voice-tone-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--black-color);
+    font-size: 1rem;
+}
+
+.benefit-item i {
+    color: var(--orange-color);
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.voice-tone-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.voice-tone-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+/* Responsividade para Voice Tone Section */
+@media (max-width: 992px) {
+    .voice-tone-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .voice-tone-text h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .voice-tone-text h3 {
+        font-size: 1.6rem;
+    }
+    
+    .voice-tone-text p {
+        font-size: 1rem;
+    }
+    
+    .benefit-item {
+        font-size: 0.95rem;
+    }
 }
 
 /* --- Portfolio Section --- */
@@ -1539,6 +1741,13 @@ footer {
 
     .hero-buttons {
         justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
     }
 
     .portfolio-grid {
@@ -1555,12 +1764,21 @@ footer {
 
     .contact-container {
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
+        padding: 0 16px;
     }
 
     .contact-text, .contact-form {
         max-width: 100%;
         flex-basis: auto;
+    }
+
+    .contact-text {
+        text-align: center;
+    }
+
+    .contact-form {
+        margin-left: 0;
     }
 
     .footer-top {
@@ -1604,10 +1822,22 @@ footer {
 
     .hero {
         padding: 40px 0;
+        min-height: auto;
     }
 
     .hero-text h1 {
-        font-size: 2.8rem;
+        font-size: 2.2rem;
+    }
+
+    .hero-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+        height: auto;
     }
 
     .info-section h2, .cta-section h2 {
