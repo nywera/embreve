@@ -89,7 +89,13 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding-top: 92px; /* Ajuste para o header fixo */
+    padding-top: 0; /* Remove padding-top para que sections fiquem coladas ao header */
+}
+
+/* Garante que não haja espaço entre header e conteúdo */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -103,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
 */
 
 section {
-    padding: 60px 0; /* Padding vertical das seções */
+    padding: 0; /* Remove padding vertical das seções */
     min-height: auto;
     max-height: 720px;
     box-sizing: border-box;
@@ -257,7 +263,7 @@ section {
 
 /* --- Header --- */
 header {
-    padding: 28px 0;
+    padding: 20px 0;
     background-color: var(--light-color); /* Cor padrão para a home */
     position: fixed;
     top: 0;
@@ -267,6 +273,8 @@ header {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
+    border: none;
+    border-bottom: none;
 }
 
 
@@ -288,7 +296,7 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 35px;
+    gap: 30px;
 }
 
 nav a {
@@ -296,7 +304,7 @@ nav a {
     color: var(--black-color);
     font-weight: 500;
     font-size: 1.2rem;
-    padding-bottom: 5px;
+    padding: 0;
     border-bottom: 2px solid transparent;
     transition: color 0.3s ease, border-color 0.3s ease;
 }
@@ -328,13 +336,14 @@ nav ul li.dropdown:hover .dropdown-icon {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--light-color);
     border-radius: 8px;
     padding: 10px 0;
     list-style: none;
     min-width: 200px;
     z-index: 1000;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    opacity: 1;
+    backdrop-filter: none;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -342,14 +351,9 @@ nav ul li.dropdown:hover .dropdown-icon {
 }
 
 .dropdown-menu li a {
-    color: var(--dark-color);
     padding: 12px 20px;
     display: block;
     transition: background-color 0.3s ease;
-}
-
-.dropdown-menu a:hover {
-    background-color: var(--gray-color);
 }
 
 
@@ -362,7 +366,7 @@ nav ul li.dropdown:hover .dropdown-icon {
 /* Regras para o tema escuro do header */
 header.header-dark {
     background-color: var(--dark-color);
-    border-bottom: 1px solid var(--gray-color);
+    border-bottom: none;
 }
 
 header.header-dark .logo .logo-dark {
@@ -386,10 +390,36 @@ header.header-dark .mobile-nav-toggle {
     color: var(--light-color);
 }
 
+/* Dropdown para tema dark */
+header.header-dark .dropdown-menu {
+    background-color: var(--dark-color) !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    background: var(--dark-color) !important;
+}
+
+header.header-dark .dropdown-menu li a {
+    color: var(--light-color) !important;
+}
+
+header.header-dark .dropdown-menu a:hover {
+    background-color: var(--light-gray-color) !important;
+}
+
+/* Força background sólido para dropdown dark em qualquer contexto */
+.header-dark .dropdown-menu,
+header.header-dark .dropdown-menu,
+.dropdown-menu.header-dark {
+    background: var(--dark-color) !important;
+    background-color: var(--dark-color) !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+}
+
 /* Regras para o tema light do header */
 header.header-light {
     background-color: var(--light-color);
-    border-bottom: 1px solid var(--gray-color);
+    border-bottom: none;
 }
 
 header.header-light .logo .logo-dark {
@@ -402,15 +432,43 @@ header.header-light .logo .logo-light {
 
 header.header-light nav a {
     color: var(--dark-color);
+    border-bottom: none;
 }
 
 header.header-light nav a:hover,
 header.header-light nav a.active {
     color: var(--orange-color);
+    border-bottom: none;
 }
 
 header.header-light .mobile-nav-toggle {
     color: var(--dark-color);
+}
+
+/* Dropdown para tema light */
+header.header-light .dropdown-menu {
+    background-color: var(--light-color) !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    background: var(--light-color) !important;
+}
+
+header.header-light .dropdown-menu li a {
+    color: var(--dark-color) !important;
+}
+
+header.header-light .dropdown-menu a:hover {
+    background-color: var(--gray-color) !important;
+}
+
+/* Força background sólido para dropdown light em qualquer contexto */
+.header-light .dropdown-menu,
+header.header-light .dropdown-menu,
+.dropdown-menu.header-light {
+    background: var(--light-color) !important;
+    background-color: var(--light-color) !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
 }
 
 /*
@@ -427,6 +485,26 @@ header.header-dark.scrolled {
 */
 header.header-light.scrolled {
     background-color: var(--light-color) !important;
+}
+
+/* Remove qualquer linha horizontal do header em todos os contextos */
+header,
+header *,
+.header-wrapper,
+.header-wrapper * {
+    border-bottom: none !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* Garante que a primeira seção fique colada ao header */
+section:first-of-type,
+.hero,
+.contact-section,
+.branding-intro-section {
+    margin-top: 0 !important;
+    padding-top: 84px !important; /* Compensa a altura do header fixo */
 }
 
 /* --- Footer --- */
@@ -552,9 +630,10 @@ footer {
     background-color: var(--light-color);
     display: flex;
     align-items: center;
-    padding: 0;
+    padding: 84px 0 60px 0; /* 84px top para compensar header fixo + 60px bottom */
     position: relative; /* Garante o empilhamento correto */
     z-index: 2; /* Coloca a hero na frente */
+    margin-top: 0; /* Remove qualquer margin */
     /* max-height agora é herdado da regra 'section' global */
 }
 
@@ -677,8 +756,6 @@ footer {
     .dropdown.submenu-open > .dropdown-menu {
         display: block;
         position: static;
-        background: none;
-        box-shadow: none;
         padding-left: 20px; /* Indenta o submenu para clareza */
         border: none;
     }
