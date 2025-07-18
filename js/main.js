@@ -52,6 +52,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
         const primaryNav = document.querySelector('.primary-navigation');
 
+        // Aplica o tema correto do header baseado na página
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const lightThemePages = ['index.html', 'contato.html'];
+        
+        if (lightThemePages.includes(currentPage)) {
+            // Páginas com tema light (menu light, texto preto)
+            header.classList.add('header-light');
+        } else {
+            // Demais páginas com tema dark (menu dark, texto light)
+            header.classList.add('header-dark');
+        }
+
         // Menu mobile
         if (mobileNavToggle && primaryNav) {
             mobileNavToggle.addEventListener('click', () => {
@@ -74,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Ativa o link da página atual no menu
         const navLinks = document.querySelectorAll('header nav a');
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html'; // Padrão para index.html se vazio
         navLinks.forEach(link => {
             const linkPage = link.getAttribute('href').split('/').pop();
             if (linkPage === currentPage) {

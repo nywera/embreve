@@ -386,12 +386,47 @@ header.header-dark .mobile-nav-toggle {
     color: var(--light-color);
 }
 
+/* Regras para o tema light do header */
+header.header-light {
+    background-color: var(--light-color);
+    border-bottom: 1px solid var(--gray-color);
+}
+
+header.header-light .logo .logo-dark {
+    display: block; /* Mostra o logo escuro */
+}
+
+header.header-light .logo .logo-light {
+    display: none; /* Esconde o logo branco */
+}
+
+header.header-light nav a {
+    color: var(--dark-color);
+}
+
+header.header-light nav a:hover,
+header.header-light nav a.active {
+    color: var(--orange-color);
+}
+
+header.header-light .mobile-nav-toggle {
+    color: var(--dark-color);
+}
+
 /*
   Correção para o header-dark no scroll
   Garante que o fundo permaneça preto e sólido, sobrepondo qualquer outra regra de transparência.
 */
 header.header-dark.scrolled {
     background-color: var(--black-color) !important;
+}
+
+/*
+  Correção para o header-light no scroll
+  Garante que o fundo permaneça branco e sólido, sobrepondo qualquer outra regra de transparência.
+*/
+header.header-light.scrolled {
+    background-color: var(--light-color) !important;
 }
 
 /* --- Footer --- */
