@@ -110,8 +110,8 @@ h1, h2, h3, h4, h5, h6 {
 
 section {
     padding: 0; /* Remove padding vertical das seções */
-    min-height: auto;
-    max-height: 720px;
+    min-height: 600px;
+    max-height: 600px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -305,14 +305,14 @@ nav a {
     font-weight: 500;
     font-size: 1.2rem;
     padding: 0;
-    border-bottom: 2px solid transparent;
-    transition: color 0.3s ease, border-color 0.3s ease;
+    border-bottom: none;
+    transition: color 0.3s ease;
 }
 
 nav a.active,
 nav a:hover {
-    color: var(--orange-color);
-    border-color: var(--orange-color);
+    color: var(--black-color);
+    border-bottom: 2px solid var(--orange-color) !important;
 }
 
 /* --- Dropdown Menu --- */
@@ -337,7 +337,7 @@ nav ul li.dropdown:hover .dropdown-icon {
     top: 100%;
     left: 0;
     border-radius: 8px;
-    padding: 10px 0;
+    padding: 6px 0;
     list-style: none;
     min-width: 200px;
     z-index: 1000;
@@ -351,7 +351,7 @@ nav ul li.dropdown:hover .dropdown-icon {
 }
 
 .dropdown-menu li a {
-    padding: 12px 20px;
+    padding: 8px 20px;
     display: block;
     transition: background-color 0.3s ease;
 }
@@ -383,7 +383,8 @@ header.header-dark nav a {
 
 header.header-dark nav a:hover,
 header.header-dark nav a.active {
-    color: var(--orange-color);
+        color: var(--light-color);
+        border-bottom: 2px solid var(--orange-color);
 }
 
 header.header-dark .mobile-nav-toggle {
@@ -392,10 +393,10 @@ header.header-dark .mobile-nav-toggle {
 
 /* Dropdown para tema dark */
 header.header-dark .dropdown-menu {
-    background-color: var(--dark-color) !important;
+    background-color: var(--black-color) !important;
     opacity: 1 !important;
     backdrop-filter: none !important;
-    background: var(--dark-color) !important;
+    background: var(--black-color) !important;
 }
 
 header.header-dark .dropdown-menu li a {
@@ -410,8 +411,8 @@ header.header-dark .dropdown-menu a:hover {
 .header-dark .dropdown-menu,
 header.header-dark .dropdown-menu,
 .dropdown-menu.header-dark {
-    background: var(--dark-color) !important;
-    background-color: var(--dark-color) !important;
+    background: var(--black-color) !important;
+    background-color: var(--black-color) !important;
     opacity: 1 !important;
     backdrop-filter: none !important;
 }
@@ -437,8 +438,8 @@ header.header-light nav a {
 
 header.header-light nav a:hover,
 header.header-light nav a.active {
-    color: var(--orange-color);
-    border-bottom: none;
+    color: var(--black-color);
+    border-bottom: 2px solid var(--orange-color);
 }
 
 header.header-light .mobile-nav-toggle {
@@ -459,6 +460,7 @@ header.header-light .dropdown-menu li a {
 
 header.header-light .dropdown-menu a:hover {
     background-color: var(--gray-color) !important;
+    border-bottom: 2px solid var(--orange-color);
 }
 
 /* Força background sólido para dropdown light em qualquer contexto */
@@ -489,9 +491,7 @@ header.header-light.scrolled {
 
 /* Remove qualquer linha horizontal do header em todos os contextos */
 header,
-header *,
-.header-wrapper,
-.header-wrapper * {
+.header-wrapper {
     border-bottom: none !important;
     border-top: none !important;
     border-left: none !important;
@@ -1382,7 +1382,9 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 0;
+    padding: 84px 0 120px 0; /* 84px top para compensar header fixo + 120px bottom (igual ao hero) */
+    margin-top: 0; /* Remove qualquer margin */
+    min-height: 100vh; /* Garante altura mínima igual ao hero */
 }
 
 .contact-container {
@@ -2088,22 +2090,27 @@ footer {
    ==================================== */
 
 .contact-section {
-    padding: 60px 0;
+    background-color: var(--light-color);
     display: flex;
     align-items: center;
+    padding: 84px 0 60px 0; /* 84px top para compensar header fixo + 60px bottom */
+    position: relative; /* Garante o empilhamento correto */
+    z-index: 2; /* Coloca a contact-section na frente */
+    margin-top: 0; /* Remove qualquer margin */
+    min-height: 100vh; /* Garante altura mínima igual ao hero */
 }
 
 .contact-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-start;
     gap: 5%;
     padding: 0 32px; /* User preference */
 }
 
 .contact-text {
-    flex-basis: 35%; /* User preference */
-    max-width: 35%;   /* User preference */
+    flex-basis: 25%; /* Reduzido para dar mais espaço ao formulário */
+    max-width: 25%;   /* Reduzido para dar mais espaço ao formulário */
 }
 
 .contact-us-tag {
@@ -2142,8 +2149,9 @@ footer {
 }
 
 .contact-form-wrapper {
-    flex-basis: 60%; /* User preference */
-    max-width: 60%;   /* User preference */
+    flex-basis: 70%; /* Aumentado para ocupar mais espaço */
+    max-width: 70%;   /* Aumentado para ocupar mais espaço */
+    margin-left: auto; /* Alinha à direita */
 }
 
 .form-row {

@@ -54,9 +54,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Aplica o tema correto do header baseado na página
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        const lightThemePages = ['index.html', 'contato.html'];
+        const currentPath = window.location.pathname;
+        const lightThemePages = ['index.html', 'contato.html', '404.html'];
         
-        if (lightThemePages.includes(currentPage)) {
+        // Verifica se é uma página 404 (pode ser detectada de várias formas)
+        const is404Page = currentPage === '404.html' || 
+                         currentPath.includes('404') || 
+                         document.title.includes('não encontrada') ||
+                         document.querySelector('.error-section') !== null;
+        
+        if (lightThemePages.includes(currentPage) || is404Page) {
             // Páginas com tema light (menu light, texto preto)
             header.classList.add('header-light');
         } else {
