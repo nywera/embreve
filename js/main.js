@@ -131,4 +131,182 @@ document.addEventListener('DOMContentLoaded', function() {
             currentCharCount.textContent = currentLength;
         });
     }
+
+    // Newsletter form handler
+    const newsletterForm = document.getElementById('newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+            const messageDiv = document.getElementById('newsletter-message');
+            
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                showNewsletterMessage('Por favor, insira um email válido.', 'error');
+                return;
+            }
+            
+            // Mostrar loading
+            const submitBtn = this.querySelector('button');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            submitBtn.disabled = true;
+            
+            // Enviar dados
+            fetch('process-newsletter.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNewsletterMessage(data.message, 'success');
+                    emailInput.value = '';
+                } else {
+                    showNewsletterMessage(data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                showNewsletterMessage('Erro ao processar inscrição. Tente novamente.', 'error');
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    }
+    
+    function showNewsletterMessage(message, type) {
+        const messageDiv = document.getElementById('newsletter-message');
+        if (messageDiv) {
+            messageDiv.textContent = message;
+            messageDiv.className = `newsletter-message ${type}`;
+            messageDiv.style.display = 'block';
+            
+            // Auto-hide após 5 segundos
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+    }
+});
+
+// Formulário de contato
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const messageTextarea = document.getElementById('message');
+    const charCount = document.getElementById('current-chars');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    const formMessage = document.getElementById('formMessage');
+
+    // Contador de caracteres
+    if (messageTextarea && charCount) {
+        messageTextarea.addEventListener('input', function() {
+            const currentLength = this.value.length;
+            charCount.textContent = currentLength;
+            
+            if (currentLength > 250) {
+                charCount.style.color = '#ff6b35';
+            } else {
+                charCount.style.color = '';
+            }
+        });
+    }
+
+    // Envio do formulário
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validar campos obrigatórios
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!fullname || !email || !message) {
+                showFormMessage('Por favor, preencha todos os campos obrigatórios.', 'error');
+                return;
+            }
+            
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showFormMessage('Por favor, insira um email válido.', 'error');
+                return;
+            }
+            
+            // Preparar dados
+            const formData = {
+                fullname: fullname,
+                email: email,
+                phone: document.getElementById('phone').value.trim(),
+                position: document.getElementById('position').value,
+                message: message
+            };
+            
+            // Mostrar loading
+            setFormLoading(true);
+            hideFormMessage();
+            
+            // Enviar dados
+            fetch('process-contact.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showFormMessage(data.message, 'success');
+                    contactForm.reset();
+                    if (charCount) charCount.textContent = '0';
+                } else {
+                    showFormMessage(data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                showFormMessage('Erro ao enviar mensagem. Tente novamente ou entre em contato pelo WhatsApp.', 'error');
+            })
+            .finally(() => {
+                setFormLoading(false);
+            });
+        });
+    }
+    
+    function setFormLoading(loading) {
+        if (loading) {
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            submitBtn.disabled = true;
+        } else {
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    }
+    
+    function showFormMessage(message, type) {
+        formMessage.textContent = message;
+        formMessage.className = `form-message form-message-${type}`;
+        formMessage.style.display = 'block';
+        
+        // Scroll para a mensagem
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    function hideFormMessage() {
+        formMessage.style.display = 'none';
+    }
 });

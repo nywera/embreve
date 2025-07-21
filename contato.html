@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Transforme sua marca com a Nywera! Especialistas em UX/UI Design, Branding e Consultoria Digital. Mais de 10 anos de experiência criando experiências digitais que convertem!">
-    <link rel="icon" href="img/favicon.png" type="image/svg+xml">
+    <link rel="icon" href="assets/img/favicon.png" type="image/svg+xml">
     <title>nywera | contato</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,15 +29,15 @@
                     </a>
                 </div>
                 <div class="contact-form-wrapper">
-                    <form action="#" method="POST">
+                    <form id="contactForm" action="process-contact.php" method="POST">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="fullname">Nome Completo</label>
-                                <input type="text" id="fullname" name="fullname" class="form-input" placeholder="Digite seu nome completo">
+                                <label for="fullname">Nome Completo *</label>
+                                <input type="text" id="fullname" name="fullname" class="form-input" placeholder="Digite seu nome completo" required>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" class="form-input" placeholder="Digite seu endereço de email">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="Digite seu endereço de email" required>
                             </div>
                         </div>
                         <div class="form-row">
@@ -58,13 +58,20 @@
                         </div>
                        
                         <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" name="message" rows="4" class="form-input" placeholder="Digite sua mensagem aqui..." maxlength="300"></textarea>
+                            <label for="message">Mensagem *</label>
+                            <textarea id="message" name="message" rows="4" class="form-input" placeholder="Digite sua mensagem aqui..." maxlength="300" required></textarea>
                             <div class="char-count">
                                 <span id="current-chars">0</span> / 300
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensagem<i class="fas fa-arrow-right"></i></button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span class="btn-text">Enviar Mensagem</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Enviando...
+                            </span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <div id="formMessage" class="form-message" style="display: none;"></div>
                     </form>
 
 
