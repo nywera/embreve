@@ -527,7 +527,7 @@ footer {
 }
 
 .footer-logo-col img {
-    max-width: 150px;
+    width: 100%;
 }
 
 .footer-col {
