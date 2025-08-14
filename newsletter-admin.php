@@ -44,7 +44,7 @@ if (isset($subscribers_data['subscribers'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administração Newsletter - Nywera</title>
+    <title>Administração Newsletter - nywera</title>
     <style>
         * {
             margin: 0;
@@ -200,7 +200,7 @@ if (isset($subscribers_data['subscribers'])) {
 </head>
 <body>
     <div class="header">
-        <h1>Administração Newsletter - Nywera</h1>
+        <h1>Administração Newsletter - nywera</h1>
     </div>
     
     <div class="container">

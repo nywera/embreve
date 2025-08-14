@@ -82,7 +82,7 @@ $subscribers_data['subscribers'][] = $new_subscriber;
 // Salvar no arquivo
 if (saveSubscribers($newsletter_file, $subscribers_data)) {
     // Enviar email de confirmação para o usuário
-    $user_subject = 'Inscrição na Newsletter - Nywera';
+    $user_subject = 'Inscrição na Newsletter - nywera';
     $user_body = "
 Olá!
 
@@ -98,7 +98,7 @@ Se você não solicitou esta inscrição, pode se descadastrar respondendo este 
 
 ---
 Atenciosamente,
-Equipe Nywera
+Equipe nywera
 contato@nywera.com.br
 ";
 
@@ -110,8 +110,8 @@ contato@nywera.com.br
 
     mail($email, $user_subject, $user_body, implode("\r\n", $user_headers));
 
-    // Enviar notificação para a Nywera
-    $nywera_subject = 'Nova inscrição na Newsletter - Nywera';
+    // Enviar notificação para a nywera
+    $nywera_subject = 'Nova inscrição na Newsletter - nywera';
     $nywera_body = "
 Nova inscrição na newsletter recebida.
 
@@ -123,7 +123,7 @@ IP: " . $_SERVER['REMOTE_ADDR'] . "
 TOTAL DE INSCRITOS: " . count($subscribers_data['subscribers']) . "
 
 ---
-Sistema de Newsletter - Nywera
+Sistema de Newsletter - nywera
 ";
 
     $nywera_headers = array(

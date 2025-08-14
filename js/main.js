@@ -226,65 +226,50 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Validar campos obrigatórios
+
             const fullname = document.getElementById('fullname').value.trim();
             const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const position = document.getElementById('position').value;
             const message = document.getElementById('message').value.trim();
-            
+
             if (!fullname || !email || !message) {
                 showFormMessage('Por favor, preencha todos os campos obrigatórios.', 'error');
                 return;
             }
-            
-            // Validar email
+
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 showFormMessage('Por favor, insira um email válido.', 'error');
                 return;
             }
+
+            const whatsappNumber = '14996366473';
+            let whatsappMessage = `Olá! Tenho interesse nos serviços da nywera.\n\n`;
+            whatsappMessage += `*Nome:* ${fullname}\n`;
+            whatsappMessage += `*Email:* ${email}\n`;
+            if (phone) {
+                whatsappMessage += `*Telefone:* ${phone}\n`;
+            }
+            if (position) {
+                whatsappMessage += `*Cargo:* ${position}\n`;
+            }
+            whatsappMessage += `\n*Mensagem:*\n${message}`;
+
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            // Abre o WhatsApp em uma nova aba
+            window.open(whatsappUrl, '_blank');
             
-            // Preparar dados
-            const formData = {
-                fullname: fullname,
-                email: email,
-                phone: document.getElementById('phone').value.trim(),
-                position: document.getElementById('position').value,
-                message: message
-            };
-            
-            // Mostrar loading
-            setFormLoading(true);
-            hideFormMessage();
-            
-            // Enviar dados
-            fetch('process-contact.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showFormMessage(data.message, 'success');
-                    contactForm.reset();
-                    if (charCount) charCount.textContent = '0';
-                } else {
-                    showFormMessage(data.message, 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                showFormMessage('Erro ao enviar mensagem. Tente novamente ou entre em contato pelo WhatsApp.', 'error');
-            })
-            .finally(() => {
-                setFormLoading(false);
-            });
+            // Opcional: Limpar o formulário e mostrar mensagem de sucesso
+            showFormMessage('Você está sendo redirecionado para o WhatsApp. Conclua o envio por lá!', 'success');
+            contactForm.reset();
+            if (charCount) charCount.textContent = '0';
+
         });
     }
-    
+
     function setFormLoading(loading) {
         if (loading) {
             btnText.style.display = 'none';

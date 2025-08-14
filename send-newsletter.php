@@ -48,7 +48,7 @@ $content
 ---
 Para se descadastrar, responda este email com 'DESCADASTRAR'.
 Atenciosamente,
-Equipe Nywera
+Equipe nywera
 contato@nywera.com.br
 ";
                 
@@ -88,7 +88,7 @@ if (isset($subscribers_data['subscribers'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enviar Newsletter - Nywera</title>
+    <title>Enviar Newsletter - nywera</title>
     <style>
         * {
             margin: 0;
@@ -215,7 +215,7 @@ if (isset($subscribers_data['subscribers'])) {
 </head>
 <body>
     <div class="header">
-        <h1>Enviar Newsletter - Nywera</h1>
+        <h1>Enviar Newsletter - nywera</h1>
     </div>
     
     <div class="container">
@@ -238,7 +238,7 @@ if (isset($subscribers_data['subscribers'])) {
                 <div class="form-group">
                     <label for="subject">Assunto do Email *</label>
                     <input type="text" id="subject" name="subject" required 
-                           placeholder="Ex: Novidades da Nywera - Janeiro 2025">
+                           placeholder="Ex: Novidades da nywera - Janeiro 2025">
                 </div>
                 
                 <div class="form-group">
