@@ -750,6 +750,17 @@ footer {
 
 /* Celulares */
 @media (max-width: 768px) {
+    header {
+        padding: 8px 0; /* Reduzido de 20px */
+    }
+
+    section:first-of-type,
+    .hero,
+    .contact-section,
+    .branding-intro-section {
+        padding-top: 72px !important; /* Ajustado para compensar o header menor */
+    }
+
     .header-wrapper nav {
         display: none; /* Esconde a navegação por padrão */
     }
@@ -774,6 +785,12 @@ footer {
     .header-wrapper.nav-open nav a {
         font-size: 1.8rem;
         color: var(--black-color);
+    }
+
+    .header-wrapper.nav-open nav a:hover,
+    .header-wrapper.nav-open nav a.active {
+        color: var(--black-color);
+        border-bottom: 2px solid var(--orange-color) !important;
     }
 
     /* Dropdown no mobile */
@@ -856,7 +873,7 @@ footer {
 
     .content-wrapper {
         width: 100%;
-        padding: 0 16px;
+        padding: 0 24px; /* Aumentado para dar mais respiro */
     }
 
     .hero-text h1 {
@@ -2555,7 +2572,7 @@ footer {
         gap: 0;
     }
     .contact-text h1 {
-        font-size: 3rem;
+        font-size: 2.2rem; /* Reduzido para mobile */
     }
 }
 
