@@ -1,16 +1,111 @@
+<style>
+    .portfolio-section {
+        height: auto;
+        min-height: auto;
+        max-height: none;
+        padding-top: 48px; /* 60% de redução de 120px */
+    }
+
+    .portfolio-section .portfolio-header {
+        margin-top: 0; /* Remove a margem original para controlar pelo padding */
+    }
+
+    .portfolio-grid .grid-item img {
+        object-fit: cover;
+    }
+
+    /* --- Partners Carousel --- */
+    .partners-section {
+        margin-top: 80px;
+        text-align: center;
+    }
+
+    .partners-header h4 {
+        font-family: 'Inter', sans-serif;
+        color: var(--orange-color);
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    .logo-slider {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+    }
+
+    .logo-track {
+        display: flex;
+        width: calc(300px * 6); /* 3 logos x 2 (para o loop) = 6 */
+        animation: scroll 20s linear infinite;
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-300px * 3)); } /* Move a distância de 3 logos */
+    }
+
+    .slide {
+        width: 300px; /* Aumentado de 250px */
+        height: 120px; /* Aumentado de 100px */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+
+    .slide img {
+        max-width: 100%;
+        max-height: 60px; /* Aumentado de 50px */
+        width: auto;
+        object-fit: contain; /* Usar contain para logos para não cortar */
+        filter: grayscale(100%) opacity(0.6);
+        transition: filter 0.3s ease;
+    }
+
+    .slide:hover img {
+        filter: grayscale(0%) opacity(1);
+    }
+</style>
 <section class="portfolio-section">
     <div class="content-wrapper">
         <div class="section-header portfolio-header">
             <h3>Cases de sucesso</h3>
         </div>
         <div class="portfolio-grid">
-                    <div class="grid-item item-1"><img src="assets/img/portfolio/lene.png" alt="Lene Studio" loading="lazy"></div>
-        <div class="grid-item item-2"><img src="assets/img/portfolio/AmandaZanetti.png" alt="Amanda Zanetti" loading="lazy"></div>
-        <div class="grid-item item-7"><img src="assets/img/portfolio/bitway.png" alt="Bitway" loading="lazy"></div>
-        <div class="grid-item item-4"><img src="assets/img/portfolio/veronica_login.png" alt="Veronica" loading="lazy"></div>
-        <div class="grid-item item-5"><img src="assets/img/portfolio/drexfy.png" alt="Drexfy" loading="lazy"></div>
-        <div class="grid-item item-6"><img src="assets/img/portfolio/veronica.png" alt="Veronica" loading="lazy"></div>
-        <div class="grid-item item-3"><img src="assets/img/portfolio/agrodarros.png" alt="Agro Darros" loading="lazy"></div>
+            <div class="grid-item item-2"><img src="assets/img/portfolio/AmandaZanetti.jpg" alt="Amanda Zanetti" loading="lazy"></div>
+            <div class="grid-item item-1"><img src="assets/img/portfolio/balestrin.jpg" alt="Balestrin" loading="lazy"></div>            
+            <div class="grid-item item-7"><img src="assets/img/portfolio/bitway.jpg" alt="Bitway" loading="lazy"></div>
+            <div class="grid-item item-4"><img src="assets/img/portfolio/focus.jpg" alt="Focus" loading="lazy"></div>
+            <div class="grid-item item-5"><img src="assets/img/portfolio/drexfy.jpg" alt="Drexfy" loading="lazy"></div>
+            <div class="grid-item item-6"><img src="assets/img/portfolio/veronica.jpg" alt="Veronica" loading="lazy"></div>
+            <div class="grid-item item-3"><img src="assets/img/portfolio/agroplay.jpg" alt="Agro Darros" loading="lazy"></div>
         </div>
+
+        <!-- Início da Seção de Parceiros -->
+        <div class="partners-section">
+            <div class="partners-header">
+                <h4>Empresas parceiras</h4>
+            </div>
+            <div class="logo-slider">
+                <div class="logo-track">
+                    <!-- 3 logos de parceiros -->
+                    <div class="slide"><img src="assets/img/portfolio/parceiro_lene.png" alt="Parceiro Lene Studio"></div>
+                    <div class="slide"><img src="assets/img/portfolio/parceiro_amanda.png" alt="Parceiro Amanda Zanetti"></div>
+                    <div class="slide"><img src="assets/img/portfolio/parceiro_balestrin.png" alt="Parceiro Balestrin"></div>
+                    <!-- Logos duplicados para o efeito de rolagem infinita -->
+                    <div class="slide"><img src="assets/img/portfolio/parceiro_lene.png" alt="Parceiro Lene Studio"></div>
+                    <div class="slide"><img src="assets/img/portfolio/parceiro_amanda.png" alt="Parceiro Amanda Zanetti"></div>
+                    <div class="slide"><img src="assets/img/portfolio/parceiro_balestrin.png" alt="Parceiro Balestrin"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim da Seção de Parceiros -->
+        
     </div>
 </section>
